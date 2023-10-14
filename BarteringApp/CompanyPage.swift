@@ -9,14 +9,13 @@ import SwiftUI
 
 struct CompanyPage: View {
     var body: some View {
+        NavigationView {
         VStack {
             ZStack {
                 Rectangle()
-                    .fill(Color("Turquoise"))
+                    .fill(Color("turquoise"))
                 VStack (alignment: .leading) {
-                    Image(systemName: "chevron.backward").padding(.leading)
                     HStack {
-                        
                         Image("DesignLogo")
                             .resizable()
                             .frame(width: 90, height: 90)
@@ -29,18 +28,16 @@ struct CompanyPage: View {
                     .onTapGesture {
                         print("Show details for user")
                     }
-                    Text("Thompson Design Studio").font(.headline.bold()).padding().fixedSize(horizontal: false, vertical: true)
+                    Text("Sooner Greenery").font(.headline.bold()).padding().fixedSize(horizontal: false, vertical: true)
                 }
             }
             VStack  (alignment: .leading) {
-                HStack {
                     VStack {
-                        Text("Thompson Design Studio is an international brand and design agency. We create brands for the most innovative and exciting companies in the world.")
+                        Text("Sooner Greenery is a window cleaning service which will surely leave your customers admiring their own reflection! We promise a mirror like finish and a smile at the end of the day!")
                             .font(.caption)
                             .fixedSize(horizontal: false, vertical: true)
-                            .padding(2)
+                            .padding(5)
                     }
-                }
                 Divider()
                 HStack {
                     Image(systemName: "building.2")
@@ -48,7 +45,7 @@ struct CompanyPage: View {
                         Text("Age of Company").font(.caption)
                         Text("5 Years").font(.body.bold())
                     }
-                }.padding(2)
+                }.padding(5)
                 Divider()
                 HStack {
                     Image(systemName: "building.2")
@@ -56,7 +53,7 @@ struct CompanyPage: View {
                         Text("Age of Barter Shop").font(.caption)
                         Text("5 Years").font(.body.bold())
                     }
-                }.padding(2)
+                }.padding(5)
                 Divider()
                 HStack {
                     Image(systemName: "map")
@@ -64,15 +61,15 @@ struct CompanyPage: View {
                         Text("From").font(.caption)
                         Text("1904 W. Cornelia Ave").font(.body.bold())
                     }
-                }.padding(2)
+                }.padding(5)
                 Divider()
                 HStack {
                     Image(systemName: "clock")
                     VStack (alignment: .leading){
                         Text("Business Hours").font(.caption)
                         Text("8am - 9pm").font(.body.bold())
-                    }.padding(2)
-                }.padding(2)
+                    }.padding(5)
+                }.padding(5)
                 HStack {
                     Spacer()
                 Button (action: {print("whatever")}) {
@@ -82,7 +79,7 @@ struct CompanyPage: View {
                 }
                 .padding(10)
                 .foregroundColor(Color.black)
-                .background(Color("CremeBrulee"))
+                .background(Color("cremeBrulee"))
                 .cornerRadius(10)
                     Spacer()
                 }
@@ -104,17 +101,17 @@ struct CompanyPage: View {
                         }
                     }
                     Spacer()
-                Button (action: {print("whatever")}) {
-                    Text("Chat Now")
-                        .font(Font.custom("Nunito", size: 20))
-                        .padding(15)
-                        .foregroundColor(Color.white)
-                        .background(Color("Turquoise"))
-                        .cornerRadius(10)
-                }
+                    NavigationLink(destination: ChatPage()) {
+                        RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color("turquoise"))
+                                    .overlay(Text("Chat Now")).foregroundColor(Color.white)
+                                    .frame(width: 100, height: 50, alignment: .trailing)
+                                    }
                 }.padding()
-            }
-        }
+            }.padding(.top, 100)
+        }.navigationTitle("")
+        .navigationBarHidden(true)
+    }
     }
 }
 
@@ -122,9 +119,6 @@ struct CompanyPage_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             CompanyPage()
-                .previewInterfaceOrientation(.portraitUpsideDown)
-            CompanyPage()
-                .previewInterfaceOrientation(.portraitUpsideDown)
         }
     }
 }
